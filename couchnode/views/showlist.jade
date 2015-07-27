@@ -1,0 +1,59 @@
+extends layout
+
+block content
+	div(Align='center')
+		h1= title
+	table(border='0')
+		tr
+			td
+				label 作業日：
+			td
+				label= json.Period_start
+				label ～
+				label= json.Period_end
+		tr
+			td
+				label 作業者：
+			td
+				label= json.Period_worker
+		tr
+			td
+				label 場所：
+			td
+				label= json.Period_location
+		tr
+			td
+				label 時間：
+			td
+				label= json.Period_time
+		tr
+			td
+				label 客先：
+			td
+				label= json.Period_customer
+		tr
+			td
+				label 依頼元：
+			td
+				label= json.Period_requester
+		tr
+			td
+				label 作業区分
+			td
+				each classification in json.Period_classification
+					label= classification
+					label ,
+	p
+	table(border='0')
+		tr
+			td
+				label 内容
+		tr
+			td= json.Period_content
+	p
+	table(border='0')
+		tr
+			td
+				label 備考
+		tr
+			td= json.Period_remarks

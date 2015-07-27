@@ -1,0 +1,64 @@
+extends layout
+
+block content
+	div(Align='center'): h1= title
+	form(method='get', action='/list')
+		div(Align='right')
+			input(type='submit',value='履歴')
+	form(method='post', action='/')
+		table(border='0')
+			tr
+				td
+					label 期間 : 
+					td
+						input(type='text', name='Period_start_year', size='4', value='#{year}')
+						label 年
+						input(type='text', name='Period_start_month', size='1')
+						label 月
+						input(type='text', name='Period_start_day', size='1')
+						label 日　～　
+						input(type='text', name='Period_end_year', size='4')
+						label 年
+						input(type='text', name='Period_end_month', size='1')
+						label 月
+						input(type='text', name='Period_end_day', size='1')
+						label 日
+			tr
+				td: label 表題 : 
+				td: input(type='text', name='Period_title')
+			tr
+				td: label 作業者 : 
+				td: input(type='text', name='Period_worker')
+			tr
+				td: label 作業場所 : 
+				td: input(type='text', name='Period_location')
+			tr
+				td: label 作業時間 : 
+				td
+					input(type='text', name='Period_time')
+					label 時間
+			tr
+				td: label 客先 : 
+				td: input(type='text', name='Period_customer')
+			tr
+				td: label 依頼元 : 
+				td: input(type='text', name='Period_requester')
+		p
+		input(type='checkbox' name='Period_classification' value='問合対応')
+		label 問合対応
+		input(type='checkbox' name='Period_classification' value='調査作業')
+		label 調査作業
+		input(type='checkbox' name='Period_classification' value='復旧作業')
+		label 復旧作業
+		input(type='checkbox' name='Period_classification' value='修正作業')
+		label 修正作業
+		input(type='checkbox' name='Period_classification' value='打合作業')
+		label 打合作業
+		input(type='checkbox' name='Period_classification' value='その他')
+		label その他
+		p 内容
+		textarea(name='Period_content', cols='100', rows='20')
+		p 備考
+		textarea(name='Period_remarks', cols='100', rows='10')
+		p
+		input(type='submit')

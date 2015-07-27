@@ -1,0 +1,67 @@
+extends layout
+
+block content
+	script.
+		function deletealert(id){
+			var res = confirm("本当に消していいですか？");
+			if(res){
+				var f = document.createElement('form');
+				var input = document.createElement('input');
+				document.body.appendChild(f);
+				input.setAttribute('type', 'hidden');
+				input.setAttribute('name', 'delete_id');
+				input.setAttribute('value', id);
+				f.appendChild(input);
+				f.method = "POST";
+				f.action = ("/list/delete/" + id);
+				f.submit();
+				//window.location = ("/list/delete/" + id);
+			}
+		}
+	div(Align='center')
+		h1= title
+		p
+	form(method='post', action='/list')
+		table(border='0')
+			tr
+				td
+					label 検索
+			tr
+				td
+				td
+					label 表題
+				td
+					label 作業者
+				td
+					label 内容
+			tr
+				td
+				td
+					input(type='text', name='search_title', size='10')
+				td
+					input(type='text', name='search_worker', size='10')
+				td
+					input(type='text', name='search_content', size='10')
+				td
+					input(type='submit',value='検索')
+	p
+	div(Align='center')
+		table(border='1')
+			tr
+				td
+					label 日付
+				td
+					label 作業者
+				td
+					label 表題
+			each json in histry
+				tr
+					td
+						span= json.create_date
+					td
+						span= json.value[0]
+					td
+						a(href="/list/" + json.id)!= json.value[1]
+					td
+						//a(href="/list/delete/" + json.id) 削除
+						input(type='button',value='削除' onclick="deletealert(#{json.id})")
