@@ -58,10 +58,10 @@ CouchbaseCnt.prototype.ShowKeyContent = function(Key, callback){
 };
 
 CouchbaseCnt.prototype.CreateID = function(){
-	bucket.get('id',function(err,res){
+	Bucket.get('id',function(err,res){
 		if(err){
 			console.log('Create id');
-			bucket.insert('id', '0', function(err,res){
+			Bucket.insert('id', '0', function(err,res){
 				if(err){
 					console.log('create id failed', err);
 					return;

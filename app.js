@@ -12,6 +12,7 @@ app.set('view engine', 'jade');
 app.set('views', __dirname + '/views');
 
 app.get('/', function(req, res){
+	CouchCnt.CreateID();
 	res.render('index', {title: '作業日報', year: nowyear});
 });
 
